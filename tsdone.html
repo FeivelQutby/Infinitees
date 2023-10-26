@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> DONE</title>
+        <link rel="stylesheet" href="css/tsdone.css">
+        <link rel="icon" href="img/logo.png" type="image/gif" sizes="16x16">
+        <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- HEADER -->
+        <div id="1"></div>
+        <script>
+            load("header.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(1).innerHTML = req.responseText;
+            }
+        </script>
+        
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <div class="TYContain">
+            <h1>THANKYOU FOR PURCHASING </h1>
+            <a href="index.html">Go Back</a>
+        </div>
+        <br><br><br><br><br>
+        
+        <!-- FOOTER -->
+        <div id="4"></div>
+        <script>
+            load("footer.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(4).innerHTML = req.responseText;
+            }
+        </script>
+
+        <script>
+            function updateUsernameDisplay() {
+                const storedUsername = localStorage.getItem("username");
+                const usernameDisplay = document.getElementById("username-display");
+
+                if (storedUsername) {
+                    usernameDisplay.textContent = "Welcome, " + storedUsername;
+                } else {
+                    usernameDisplay.textContent = "";
+                }
+            }
+            updateUsernameDisplay();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> CART</title>
+        <link rel="stylesheet" href="css/cart.css">
+        <link rel="icon" href="img/logo.png" type="image/gif" sizes="16x16">
+        <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- HEADER -->
+        <div id="1"></div>
+        <script>
+            load("header.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(1).innerHTML = req.responseText;
+            }
+        </script>
+        <br><br><br><br>
+
+       <!-- CART CONTAINER -->
+        <div id="cartMainContainer">
+            <h1>Checkout</h1>
+            <h3 id="totalItem">Total Items: <span id="itemCount">2</span></h3>
+    
+            <div id="cartContainer">
+                <!-- Cart Items -->
+                <div class="cart-item" id="item1">
+                    <div class="item-box">
+                        <div class="item-image">
+                            <img src="img/shirt3.png" alt="Item 1 Image"> 
+                        </div>
+                        <div class="item-details">
+                            <span>Baju</span>
+                            <p>$39.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-item" id="item2">
+                    <div class="item-box">
+                        <div class="item-image">
+                            <img src="img/shirt2.png" alt="Item 2 Image"> 
+                        </div>
+                        <div class="item-details">
+                            <span>Baju Juga</span>
+                            <p>$29.99</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Total and Checkout Box -->
+                <div id="totalAndCheckoutBox">
+                    <div class="total-section">
+                        <span>Total: $<span id="totalAmount">69.98</span></span>
+                        <button id="checkoutButton" onclick="checkout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+        
+    </body>
+    <!-- FOOTER -->
+    <div id="4"></div>
+    <script>
+        load("footer.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(4).innerHTML = req.responseText;
+        }
+    </script>
+    <script>
+        function updateUsernameDisplay() {
+            const storedUsername = localStorage.getItem("username");
+            const usernameDisplay = document.getElementById("username-display");
+
+            if (storedUsername) {
+                usernameDisplay.textContent = "Welcome, " + storedUsername;
+            } else {
+                usernameDisplay.textContent = ""; 
+            }
+        }
+        updateUsernameDisplay();
+
+        function checkout() {
+            const storedUsername = localStorage.getItem("username");
+ 
+            window.location.href = "tsdone.html";
+            if (storedUsername) {
+                const transactionContainer = document.getElementById("transactionContainer");
+                transactionContainer.innerHTML = `
+                    <p>Thank you for the transaction, ${storedUsername}!</p>
+                    <a href="index.html">Go back to the main page</a>
+                `;
+            }
+        }       
+    </script>
+</html>

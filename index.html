@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>Infinitees</title>
+        <link rel="icon" href="img/logo.png" type="image/gif" sizes="16x16">
+        <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <script src="js/jQuery3.4.1.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    </head>
+
+    <body>
+        <!-- HEADER -->
+        <div id="1"></div>
+        <script>
+            load("header.html");
+            function load(url)
+            {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(1).innerHTML = req.responseText;
+            }
+        </script>
+
+        <!-- SLIDER -->
+        <div id="2"></div>
+        <script>
+            load("slider.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(2).innerHTML = req.responseText;
+            }
+        </script>
+        <br>
+
+        <!-- CONTENT SECTION -->
+        <h2 class="head">T-Shirt </h2>
+        <div id="3" class="item-container">
+            <div class="item-box">
+                <img src="img/shirt1.png" alt="Item 2">
+                <h3>JustT-Shirt</h3>
+                <p>P Baju.</p>
+                <span class="price">$19.99</span>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+            <div class="item-box">
+                <img src="img/shirt2.png" alt="Item 2">
+                <h3>OnlyShirt</h3>
+                <p>Cuma Beda Warna</p>
+                <span class="price">$29.99</span>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+        </div>
+
+        <h2 class="head">AOT Collection</h2>
+        <div class="item-container">
+            <div class="item-box">
+                <div class="product-slider">
+                    <img src="img/shirt3.png" alt="Item 3">
+                    <img src="img/shirt5.png" alt="Item 4">
+                </div>
+                <h3>BajuPacar</h3>
+                <p>Punya Cewe</p>
+                <span class="price">$39.99</span>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+            <div class="item-box">
+                <div class="product-slider">
+                    <img src="img/shirt4.png" alt="Item 3">
+                    <img src="img/shirt6.png" alt="Item 4">
+                </div>
+                <h3>BajuPacar2</h3>
+                <p>Punya Cowo</p>
+                <span class="price">$39.99</span>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- FOOTER -->
+        <div id="4"></div>
+        <script>
+            load("footer.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(4).innerHTML = req.responseText;
+            }
+        </script>
+    </body>
+
+    <!-- slider JS START -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+        $('#containerSlider').slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            });
+        });
+    </script>
+    <script>
+    function addToCart(itemId) {
+        const cartBadge = document.getElementById("cart-badge");
+        let storedCart = JSON.parse(localStorage.getItem("cart")) || {};
+        
+        storedCart[itemId] = (storedCart[itemId] || 0) + 1;
+        localStorage.setItem("cart", JSON.stringify(storedCart));
+  
+        let itemCount = 0;
+        for (const itemId in storedCart) {
+            itemCount += storedCart[itemId];
+        }
+        cartBadge.textContent = itemCount;
+    }
+
+    function updateUsernameDisplay() {
+        const storedUsername = localStorage.getItem("username");
+        const usernameDisplay = document.getElementById("username-display");
+
+        if (storedUsername) {
+            usernameDisplay.textContent = "Welcome, " + storedUsername;
+        } else {
+            usernameDisplay.textContent = ""; // Clear the username if not logged in
+        }
+    }
+    updateUsernameDisplay();
+    </script>
+</html>
